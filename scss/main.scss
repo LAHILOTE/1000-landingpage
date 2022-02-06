@@ -9,11 +9,23 @@ $tertiaryColor: #C5ABDC;
 $textColor:#393C43;
 
 
+// Mixin
+@mixin tombol {
+    display: inline-block;
+    color: white;
+    background-color: $primaryColor;
+    border-radius: 2em;
+    padding: 0.5em 2em;
+    text-decoration: none;
+}
+
+
 // Styles
 body {
     font-family: 'Montserrat', sans-serif;
-    &::before{
-        content: '' ;
+
+    &::before {
+        content: '';
         background-image: url(../img/background.png);
         background-position: top right;
         background-repeat: no-repeat;
@@ -47,25 +59,60 @@ body {
     #navbarNav {
         .navbar-nav {
             .nav-item {
-                .nav-link{
+                .nav-link {
                     color: $primaryColor;
                     font-weight: 500;
                     text-transform: uppercase;
                     margin-left: 2.4em;
 
-                    &:hover{
-                        color: darken($primaryColor, $amount: 30);
-                        transition: ;
+                    &:hover {
+                        color: darken($primaryColor, 30%);
+                        transition: 0.3s color ease;
                     }
-                } .sign-up-button{
-                    background-color: $primaryColor;
-                    color: white;
-                    border-radius: 2em;
-                    border: 0;
-                    padding-left: 1.5em;
-                    padding-right: 1.5em;
+                }
+
+                .sign-up-button {
+                    @include tombol;
                 }
             }
+        }
+    }
+
+    @media screen and (max-width: 992px) {
+        margin-top: -1em;
+    }
+}
+
+// Custom-Section
+.custom-section {
+    margin-top: 10em;
+    h2 {
+        font-weight: 700;
+        font-size: 4rem;
+        color: $primaryColor;
+        white-space: nowrap;
+        //  text-transform: uppercase;
+    }
+    h3 {
+        font-weight: 400;
+        font-size: 3rem;
+        line-height: 1;
+        color: $secondaryColor;
+        white-space: nowrap;
+    }
+    p {
+        color: $textColor;
+        font-size: 1.1rem;
+        margin-top: 2em;
+    }
+    a {
+        margin-top: 2.2em;
+        @include tombol;
+
+        &:hover {
+            color: $primaryColor;
+            border: 1px solid $primaryColor;
+            background-color: transparent;
         }
     }
 }
